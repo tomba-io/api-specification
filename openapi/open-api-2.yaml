@@ -1,0 +1,1174 @@
+swagger: "2.0"
+info:
+    description: "API description For Tomba"
+    termsOfService: "https://tomba.io/policy"
+    contact:
+        name: Tomba Team
+        url: "https://tomba.io/help"
+        email: team@tomba.io
+    license:
+        name: BSD-3-Clause
+        url: "https://raw.githubusercontent.com/tomba-io/aaa/master/LICENSE"
+    version: "v1"
+    title: "API Tomba"
+host: "api.tomba.io"
+basePath: "/v1/"
+tags:
+    - name: "Domain Search"
+      description: "Domain Search"
+
+    - name: "Email Finder"
+      description: "Email Finder"
+
+    - name: "Email Verifier"
+      description: "Email Verifier"
+
+    - name: "Technologies"
+      description: "Technologies API"
+
+    - name: "Geocode"
+      description: "IP address"
+
+    - name: "Leads"
+      description: "Leads"
+
+    - name: "Leads Lists"
+      description: "Leads Lists"
+
+    - name: "Keys"
+      description: "keys API"
+
+    - name: "Bulks IP"
+      description: "Bulk IP address"
+
+    - name: "Bulks Finders"
+      description: "Bulk Email Finder"
+
+    - name: "Bulks Technologies"
+      description: "Bulk Technologies"
+
+    - name: "Bulks Verifications"
+      description: "Bulk Email Verifier"
+
+    - name: "Bulks Search"
+      description: "Bulk Domain Search"
+
+    - name: "Logo"
+      description: "Logo API"
+
+    - name: "Domains Suggestion"
+      description: "Autocomplete API"
+
+schemes:
+    - "http"
+consumes:
+    - application/json
+    - multipart/form-data
+produces:
+    - application/json
+    - multipart/form-data
+securityDefinitions:
+    key:
+        type: apiKey
+        name: X-Tomba-Key
+        description: "Your API Key"
+        in: header
+    Secret:
+        type: apiKey
+        name: secret
+        description: "Your API secret"
+        in: query
+paths:
+    /bulk-ip:
+        get:
+            tags:
+                - "Bulks IP"
+            summary: "/v1/bulk-ip/"
+            description: "Get list of your Bulks IP"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        post:
+            consumes:
+                - multipart/form-data
+            tags:
+                - "Bulks IP"
+            summary: "/v1/bulk-ip/"
+            description: "Create a Bulk IP"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "name"
+                  in: "formData"
+                  type: "string"
+                  description: "bulk ip name"
+                  required: true
+                - name: "list"
+                  in: "formData"
+                  type: "string"
+                  description: "the ip list"
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-ip/{id}/download:
+        get:
+            tags:
+                - "Bulks IP"
+            summary: "/v1/bulk-ip/{id}/download"
+            description: "Download a Bulk IP file"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID IP Bulk "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-ip/{id}:
+        get:
+            tags:
+                - "Bulks IP"
+            summary: "/v1/bulk-ip/{id}"
+            description: "Get a Bulk IP"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID IP Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Bulks IP"
+            summary: "/v1/bulk-ip/{id}"
+            description: "Delete a Bulk IP"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID IP Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-finders:
+        get:
+            tags:
+                - "Bulks Finders"
+            summary: "/v1/bulk-finders/"
+            description: "Get list of your Bulks Finders"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        post:
+            consumes:
+                - multipart/form-data
+            tags:
+                - "Bulks Finders"
+            summary: "/v1/bulk-finders/"
+            description: "Create a Bulk"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "name"
+                  in: "formData"
+                  type: "string"
+                  description: "bulk Finders name"
+                  required: true
+                - name: "list"
+                  in: "formData"
+                  type: "string"
+                  description: "the list : first name,last name,domain"
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-finders/{id}/download:
+        get:
+            tags:
+                - "Bulks Finders"
+            summary: "/v1/bulk-finders/{id}/download"
+            description: "Download a Bulk Finders file"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Finder Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-finders/{id}:
+        get:
+            tags:
+                - "Bulks Finders"
+            summary: "/v1/bulk-finders/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Finder Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Bulks Finders"
+            summary: "/v1/bulk-finders/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Finder Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-technologies:
+        get:
+            tags:
+                - "Bulks Technologies"
+            summary: "/v1/bulk-technologies/"
+            description: "Get list of your Bulks Technologies"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-technologies/{id}/download:
+        get:
+            tags:
+                - "Bulks Technologies"
+            summary: "/v1/bulk-technologies/{id}/download"
+            description: "Download a Bulk Technologies file"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Technologies Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-technologies/{id}:
+        get:
+            tags:
+                - "Bulks Technologies"
+            summary: "/v1/bulk-technologies/{id}"
+            description: "Get a Bulk Technologies"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Technologies Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Bulks Technologies"
+            summary: "/v1/bulk-technologies/{id}"
+            description: "Delete a Bulk Technologies"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "The ID Technologies Bulk"
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /ip:
+        get:
+            tags:
+                - "Geocode"
+            summary: "/v1/ip/"
+            description: "lookup your IP address information"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /ip/{ip}:
+        get:
+            tags:
+                - "Geocode"
+            summary: "/v1/ip/{ip}"
+            description: "Get IP address details"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "ip"
+                  in: "path"
+                  type: "string"
+                  description: "IP address"
+                  x-example: "1.0.0.0"
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /ip/batch/{list_ip}:
+        get:
+            tags:
+                - "Geocode"
+            summary: "/v1/ip/batch/{list_ip}"
+            description: "Get details for list of IP address"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "list_ip"
+                  in: "path"
+                  type: "string"
+                  description: "List of ips"
+                  x-example: "1.0.0.0,2.2.2.2,3.3.3.3"
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /leads_lists/{id}:
+        get:
+            tags:
+                - "Leads Lists"
+            summary: "/v1/leads_lists/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+                - name: "page"
+                  in: "query"
+                  type: "integer"
+                  description: ""
+                  required: false
+                - name: "limit"
+                  in: "query"
+                  type: "integer"
+                  description: ""
+                  required: false
+                - name: "direction"
+                  in: "query"
+                  type: "array"
+                  items:
+                      type: "string"
+                      enum:
+                          - "name"
+                          - "created_at"
+                      default: "name"
+                  description: ""
+                  required: false
+                - name: "sortby"
+                  in: "query"
+                  type: "array"
+                  items:
+                      type: "string"
+                      enum:
+                          - "desc"
+                          - "asc"
+                  description: ""
+                  required: false
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        put:
+            tags:
+                - "Leads Lists"
+            summary: "/v1/leads_lists/{id}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Leads Lists"
+            summary: "/v1/leads_lists/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /leads_lists/:
+        get:
+            tags:
+                - "Leads Lists"
+            summary: "/v1/leads_lists/"
+            description: "Get list of your Lists leads"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        post:
+            tags:
+                - "Leads Lists"
+            summary: "/v1/leads_lists/"
+            consumes:
+                - "application/json"
+            description: "Create a new list lead"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "Content-Type"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /keys:
+        get:
+            tags:
+                - "Keys"
+            summary: "/v1/keys"
+            consumes:
+                - "application/json"
+            description: "Get list of your API Keys"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        post:
+            tags:
+                - "Keys"
+            summary: "/v1/keys"
+            consumes:
+                - "application/json"
+            description: "Create a new API KEY"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+                - name: "Content-Type"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /keys/{id}:
+        get:
+            tags:
+                - "Keys"
+            summary: "/v1/keys/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        put:
+            tags:
+                - "Keys"
+            summary: "/v1/keys/{id}"
+            consumes:
+                - "application/json"
+            description: "List all your keys"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Keys"
+            summary: "/v1/keys/{id}"
+            description: "Delete a key"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-verifications/{id}/download:
+        get:
+            tags:
+                - "Bulks Verifications"
+            summary: "/v1/bulk-verifications/{id}/download"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-verifications/{id}:
+        get:
+            tags:
+                - "Bulks Verifications"
+            summary: "/v1/bulk-verifications/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Bulks Verifications"
+            summary: "/v1/bulk-verifications/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-verifications:
+        get:
+            tags:
+                - "Bulks Verifications"
+            summary: "/v1/bulk-verifications/"
+            description: "Get list of your Bulks Verifications"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        post:
+            tags:
+                - "Bulks Verifications"
+            summary: "/v1/bulk-verifications/"
+            description: "Get list of your Bulks Verifications"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-searches:
+        post:
+            tags:
+                - "Bulks Search"
+            summary: "/v1/bulk-searches/"
+            description: "Get list of your Bulks Search"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        get:
+            tags:
+                - "Bulks Search"
+            summary: "/v1/bulk-searches/"
+            description: "Get list of your Bulks Search"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-searches/{id}:
+        get:
+            tags:
+                - "Bulks Search"
+            summary: "/v1/bulk-searches/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Bulks Search"
+            summary: "/v1/bulk-searches/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /bulk-searches/{id}/download:
+        get:
+            tags:
+                - "Bulks Search"
+            summary: "/v1/bulk-searches/{id}/download"
+            description: "Download a Bulk Search file"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /leads:
+        post:
+            tags:
+                - "Leads"
+            summary: "/v1/leads/"
+            consumes:
+                - "application/json"
+            description: "Create a new lead"
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "Content-Type"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+                - name: "X-TANNIN-KEY"
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /leads/{id}:
+        get:
+            tags:
+                - "Leads"
+            summary: "/v1/leads/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  type: "string"
+                  description: ""
+                  required: true
+                - name: ""
+                  in: "header"
+                  type: "string"
+                  description: ""
+                  required: true
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        delete:
+            tags:
+                - "Leads"
+            summary: "/v1/leads/{id}"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+        put:
+            tags:
+                - "Leads"
+            summary: "/v1/leads/{id}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /leads/:
+        get:
+            tags:
+                - "Leads"
+            summary: "/v1/leads/"
+            consumes:
+                - "application/json"
+            description: "Get list of your leads"
+            security:
+                - key: []
+                - Secret: []
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /logo/{domain}:
+        get:
+            tags:
+                - "Logo"
+            summary: "/v1/logo/{domain}"
+            description: ""
+            parameters:
+                - name: "domain"
+                  in: "path"
+                  description: "The domain name "
+                  required: true
+                  type: "string"
+                - name: "size"
+                  in: "query"
+                  description: " image size: length of longest side in pixels (default is 128)"
+                  required: false
+                  type: "integer"
+                - name: "format"
+                  in: "query"
+                  description: 'image format, either "png" or "jpg" (defaults to png)'
+                  required: false
+                  type: "string"
+                - name: "greyscale"
+                  in: "query"
+                  description: "Desaturates image if passed (defaults to false)"
+                  required: false
+                  type: "boolean"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /email-verifier/{id}:
+        get:
+            tags:
+                - "Email Verifier"
+            summary: "/v1/email-verifier/{id}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /email-finder/{id}:
+        get:
+            tags:
+                - "Email Finder"
+            summary: "/v1/email-finder/{id}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "id"
+                  in: "path"
+                  description: "ID  "
+                  required: true
+                  type: "integer"
+                  format: "int64"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /domains-suggestion:
+        get:
+            tags:
+                - "Domains Suggestion"
+            summary: "/v1/domains-suggestion"
+            consumes:
+                - "application/json"
+            description: "Get list of domain"
+            parameters:
+                - name: "query"
+                  in: "query"
+                  description: "name of the company.  "
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /technologies/{domain}:
+        get:
+            tags:
+                - "Technologies"
+            summary: "/v1/technologies/{domain}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "domain"
+                  in: "path"
+                  description: "name of the domain.  "
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+    /domain-search/{domain}:
+        get:
+            tags:
+                - "Domain Search"
+            summary: "/v1/domain-search/{domain}"
+            consumes:
+                - "application/json"
+            description: ""
+            security:
+                - key: []
+                - Secret: []
+            parameters:
+                - name: "domain"
+                  in: "path"
+                  description: "name of the domain.  "
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "successful operation"
+                "400":
+                    description: "failed operation"
+definitions:
+    Geocode:
+        type: "object"
+        properties:
+            asn:
+                type: string
+            country:
+                type: string
+            stateprov:
+                type: string
+            city:
+                type: string
+            latitude:
+                type: string
+            longitude:
+                type: string
+            name:
+                type: string
+            continent_name:
+                type: string
+            top_level_domain:
+                type: string
+            alpha3_code:
+                type: string
+            timezones:
+                type: string
+            currencies:
+                type: string
+            currencies_name:
+                type: string
+            organization:
+                type: string
+            website:
+                type: string
+            comany_type:
+                type: string
+    EmailFinder:
+        type: "object"
+        properties:
+    EmailVerifier:
+        type: "object"
+        properties:
+    DomainSearch:
+        type: "object"
+        properties:
+    Technologies:
+        type: "object"
+        properties:
+    Error:
+        type: "object"
+        properties:
+    Leads:
+        type: "object"
+        properties:
+    LeadsList:
+        type: "object"
+        properties:
+    Keys:
+        type: "object"
+        properties:
+    Bulk:
+        type: "object"
+        properties:
+    DomainsSuggestion:
+        type: "object"
+        properties:

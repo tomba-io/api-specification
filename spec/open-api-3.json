@@ -1,0 +1,1961 @@
+{
+  "components": {
+    "schemas": {
+      "Bulk": {
+        "properties": null,
+        "type": "object"
+      },
+      "DomainSearch": {
+        "properties": null,
+        "type": "object"
+      },
+      "DomainsSuggestion": {
+        "properties": null,
+        "type": "object"
+      },
+      "EmailFinder": {
+        "properties": null,
+        "type": "object"
+      },
+      "EmailVerifier": {
+        "properties": null,
+        "type": "object"
+      },
+      "Error": {
+        "properties": null,
+        "type": "object"
+      },
+      "Geocode": {
+        "properties": {
+          "alpha3_code": {
+            "type": "string"
+          },
+          "asn": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "comany_type": {
+            "type": "string"
+          },
+          "continent_name": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "currencies": {
+            "type": "string"
+          },
+          "currencies_name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organization": {
+            "type": "string"
+          },
+          "stateprov": {
+            "type": "string"
+          },
+          "timezones": {
+            "type": "string"
+          },
+          "top_level_domain": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Keys": {
+        "properties": null,
+        "type": "object"
+      },
+      "Leads": {
+        "properties": null,
+        "type": "object"
+      },
+      "LeadsList": {
+        "properties": null,
+        "type": "object"
+      },
+      "Technologies": {
+        "properties": null,
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "Secret": {
+        "description": "Your API secret",
+        "in": "query",
+        "name": "secret",
+        "type": "apiKey"
+      },
+      "key": {
+        "description": "Your API Key",
+        "in": "header",
+        "name": "X-Tomba-Key",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "team@tomba.io",
+      "name": "Tomba Team",
+      "url": "https://tomba.io/help"
+    },
+    "description": "API description For Tomba",
+    "license": {
+      "name": "BSD-3-Clause",
+      "url": "https://raw.githubusercontent.com/tomba-io/aaa/master/LICENSE"
+    },
+    "termsOfService": "https://tomba.io/policy",
+    "title": "API Tomba",
+    "version": "v1"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/bulk-finders": {
+      "get": {
+        "description": "Get list of your Bulks Finders",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-finders/",
+        "tags": [
+          "Bulks Finders"
+        ]
+      },
+      "post": {
+        "description": "Create a Bulk",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "list": {
+                    "description": "the list : first name,last name,domain",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "bulk Finders name",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-finders/",
+        "tags": [
+          "Bulks Finders"
+        ]
+      }
+    },
+    "/bulk-finders/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The ID Finder Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-finders/{id}",
+        "tags": [
+          "Bulks Finders"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The ID Finder Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-finders/{id}",
+        "tags": [
+          "Bulks Finders"
+        ]
+      }
+    },
+    "/bulk-finders/{id}/download": {
+      "get": {
+        "description": "Download a Bulk Finders file",
+        "parameters": [
+          {
+            "description": "The ID Finder Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-finders/{id}/download",
+        "tags": [
+          "Bulks Finders"
+        ]
+      }
+    },
+    "/bulk-ip": {
+      "get": {
+        "description": "Get list of your Bulks IP",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-ip/",
+        "tags": [
+          "Bulks IP"
+        ]
+      },
+      "post": {
+        "description": "Create a Bulk IP",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "list": {
+                    "description": "the ip list",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "bulk ip name",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-ip/",
+        "tags": [
+          "Bulks IP"
+        ]
+      }
+    },
+    "/bulk-ip/{id}": {
+      "delete": {
+        "description": "Delete a Bulk IP",
+        "parameters": [
+          {
+            "description": "The ID IP Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-ip/{id}",
+        "tags": [
+          "Bulks IP"
+        ]
+      },
+      "get": {
+        "description": "Get a Bulk IP",
+        "parameters": [
+          {
+            "description": "The ID IP Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-ip/{id}",
+        "tags": [
+          "Bulks IP"
+        ]
+      }
+    },
+    "/bulk-ip/{id}/download": {
+      "get": {
+        "description": "Download a Bulk IP file",
+        "parameters": [
+          {
+            "description": "The ID IP Bulk ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-ip/{id}/download",
+        "tags": [
+          "Bulks IP"
+        ]
+      }
+    },
+    "/bulk-searches": {
+      "get": {
+        "description": "Get list of your Bulks Search",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-searches/",
+        "tags": [
+          "Bulks Search"
+        ]
+      },
+      "post": {
+        "description": "Get list of your Bulks Search",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-searches/",
+        "tags": [
+          "Bulks Search"
+        ]
+      }
+    },
+    "/bulk-searches/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-searches/{id}",
+        "tags": [
+          "Bulks Search"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-searches/{id}",
+        "tags": [
+          "Bulks Search"
+        ]
+      }
+    },
+    "/bulk-searches/{id}/download": {
+      "get": {
+        "description": "Download a Bulk Search file",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-searches/{id}/download",
+        "tags": [
+          "Bulks Search"
+        ]
+      }
+    },
+    "/bulk-technologies": {
+      "get": {
+        "description": "Get list of your Bulks Technologies",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-technologies/",
+        "tags": [
+          "Bulks Technologies"
+        ]
+      }
+    },
+    "/bulk-technologies/{id}": {
+      "delete": {
+        "description": "Delete a Bulk Technologies",
+        "parameters": [
+          {
+            "description": "The ID Technologies Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-technologies/{id}",
+        "tags": [
+          "Bulks Technologies"
+        ]
+      },
+      "get": {
+        "description": "Get a Bulk Technologies",
+        "parameters": [
+          {
+            "description": "The ID Technologies Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-technologies/{id}",
+        "tags": [
+          "Bulks Technologies"
+        ]
+      }
+    },
+    "/bulk-technologies/{id}/download": {
+      "get": {
+        "description": "Download a Bulk Technologies file",
+        "parameters": [
+          {
+            "description": "The ID Technologies Bulk",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-technologies/{id}/download",
+        "tags": [
+          "Bulks Technologies"
+        ]
+      }
+    },
+    "/bulk-verifications": {
+      "get": {
+        "description": "Get list of your Bulks Verifications",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-verifications/",
+        "tags": [
+          "Bulks Verifications"
+        ]
+      },
+      "post": {
+        "description": "Get list of your Bulks Verifications",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-verifications/",
+        "tags": [
+          "Bulks Verifications"
+        ]
+      }
+    },
+    "/bulk-verifications/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-verifications/{id}",
+        "tags": [
+          "Bulks Verifications"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-verifications/{id}",
+        "tags": [
+          "Bulks Verifications"
+        ]
+      }
+    },
+    "/bulk-verifications/{id}/download": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/bulk-verifications/{id}/download",
+        "tags": [
+          "Bulks Verifications"
+        ]
+      }
+    },
+    "/domain-search/{domain}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "name of the domain.  ",
+            "in": "path",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/domain-search/{domain}",
+        "tags": [
+          "Domain Search"
+        ]
+      }
+    },
+    "/domains-suggestion": {
+      "get": {
+        "description": "Get list of domain",
+        "parameters": [
+          {
+            "description": "name of the company.  ",
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "summary": "/v1/domains-suggestion",
+        "tags": [
+          "Domains Suggestion"
+        ]
+      }
+    },
+    "/email-finder/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/email-finder/{id}",
+        "tags": [
+          "Email Finder"
+        ]
+      }
+    },
+    "/email-verifier/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/email-verifier/{id}",
+        "tags": [
+          "Email Verifier"
+        ]
+      }
+    },
+    "/ip": {
+      "get": {
+        "description": "lookup your IP address information",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/ip/",
+        "tags": [
+          "Geocode"
+        ]
+      }
+    },
+    "/ip/batch/{list_ip}": {
+      "get": {
+        "description": "Get details for list of IP address",
+        "parameters": [
+          {
+            "description": "List of ips",
+            "example": "1.0.0.0,2.2.2.2,3.3.3.3",
+            "in": "path",
+            "name": "list_ip",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/ip/batch/{list_ip}",
+        "tags": [
+          "Geocode"
+        ]
+      }
+    },
+    "/ip/{ip}": {
+      "get": {
+        "description": "Get IP address details",
+        "parameters": [
+          {
+            "description": "IP address",
+            "example": "1.0.0.0",
+            "in": "path",
+            "name": "ip",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/ip/{ip}",
+        "tags": [
+          "Geocode"
+        ]
+      }
+    },
+    "/keys": {
+      "get": {
+        "description": "Get list of your API Keys",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/keys",
+        "tags": [
+          "Keys"
+        ]
+      },
+      "post": {
+        "description": "Create a new API KEY",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/keys",
+        "tags": [
+          "Keys"
+        ]
+      }
+    },
+    "/keys/{id}": {
+      "delete": {
+        "description": "Delete a key",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/keys/{id}",
+        "tags": [
+          "Keys"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/keys/{id}",
+        "tags": [
+          "Keys"
+        ]
+      },
+      "put": {
+        "description": "List all your keys",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/keys/{id}",
+        "tags": [
+          "Keys"
+        ]
+      }
+    },
+    "/leads": {
+      "post": {
+        "description": "Create a new lead",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads/",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/leads/": {
+      "get": {
+        "description": "Get list of your leads",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads/",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/leads/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads/{id}",
+        "tags": [
+          "Leads"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads/{id}",
+        "tags": [
+          "Leads"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads/{id}",
+        "tags": [
+          "Leads"
+        ]
+      }
+    },
+    "/leads_lists/": {
+      "get": {
+        "description": "Get list of your Lists leads",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads_lists/",
+        "tags": [
+          "Leads Lists"
+        ]
+      },
+      "post": {
+        "description": "Create a new list lead",
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "X-TANNIN-KEY",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads_lists/",
+        "tags": [
+          "Leads Lists"
+        ]
+      }
+    },
+    "/leads_lists/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads_lists/{id}",
+        "tags": [
+          "Leads Lists"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "direction",
+            "required": false,
+            "schema": {
+              "items": {
+                "default": "name",
+                "enum": [
+                  "name",
+                  "created_at"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "description": "",
+            "in": "query",
+            "name": "sortby",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "desc",
+                  "asc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads_lists/{id}",
+        "tags": [
+          "Leads Lists"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "ID  ",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/leads_lists/{id}",
+        "tags": [
+          "Leads Lists"
+        ]
+      }
+    },
+    "/logo/{domain}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "The domain name ",
+            "in": "path",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": " image size: length of longest side in pixels (default is 128)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "image format, either \"png\" or \"jpg\" (defaults to png)",
+            "in": "query",
+            "name": "format",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Desaturates image if passed (defaults to false)",
+            "in": "query",
+            "name": "greyscale",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "summary": "/v1/logo/{domain}",
+        "tags": [
+          "Logo"
+        ]
+      }
+    },
+    "/technologies/{domain}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "description": "name of the domain.  ",
+            "in": "path",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "failed operation"
+          }
+        },
+        "security": [
+          {
+            "key": []
+          },
+          {
+            "Secret": []
+          }
+        ],
+        "summary": "/v1/technologies/{domain}",
+        "tags": [
+          "Technologies"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://api.tomba.io/v1/"
+    }
+  ],
+  "tags": [
+    {
+      "description": "Domain Search",
+      "name": "Domain Search"
+    },
+    {
+      "description": "Email Finder",
+      "name": "Email Finder"
+    },
+    {
+      "description": "Email Verifier",
+      "name": "Email Verifier"
+    },
+    {
+      "description": "Technologies API",
+      "name": "Technologies"
+    },
+    {
+      "description": "IP address",
+      "name": "Geocode"
+    },
+    {
+      "description": "Leads",
+      "name": "Leads"
+    },
+    {
+      "description": "Leads Lists",
+      "name": "Leads Lists"
+    },
+    {
+      "description": "keys API",
+      "name": "Keys"
+    },
+    {
+      "description": "Bulk IP address",
+      "name": "Bulks IP"
+    },
+    {
+      "description": "Bulk Email Finder",
+      "name": "Bulks Finders"
+    },
+    {
+      "description": "Bulk Technologies",
+      "name": "Bulks Technologies"
+    },
+    {
+      "description": "Bulk Email Verifier",
+      "name": "Bulks Verifications"
+    },
+    {
+      "description": "Bulk Domain Search",
+      "name": "Bulks Search"
+    },
+    {
+      "description": "Logo API",
+      "name": "Logo"
+    },
+    {
+      "description": "Autocomplete API",
+      "name": "Domains Suggestion"
+    }
+  ]
+}
